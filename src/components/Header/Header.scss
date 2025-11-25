@@ -1,0 +1,64 @@
+.header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    animation: headerUp 3s ease;
+  }
+
+  &__text {
+    font-size: 40px;
+    color: #b0b0b0;
+  }
+
+  &__name {
+    font-size: 60px;
+    font-weight: 100;
+    color: #29cdff;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  &__button {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-family: "Roboto";
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:nth-child(1) {
+      background-color: #ffffff;
+      border: none;
+      color: #000;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    &:nth-child(2) {
+      background-color: #1e293b80;
+      color: #fff;
+      border: 1px solid #334155;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@keyframes headerUp {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

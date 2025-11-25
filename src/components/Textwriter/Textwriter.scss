@@ -1,0 +1,21 @@
+.textwriter-wrapper {
+  position: relative;
+}
+
+.textwriter {
+  font-family: "Science Gothic", sans-serif;
+  font-weight: 200;
+  font-size: 40px;
+  color: #20e4ba;
+
+  &.real {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 1;
+  }
+
+  &.ghost {
+    opacity: 0;
+  }
+}
