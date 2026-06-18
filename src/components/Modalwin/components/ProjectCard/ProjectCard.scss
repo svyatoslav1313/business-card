@@ -2,7 +2,7 @@
   grid-column: span 6;
   width: 100%;
   height: 300px;
-  background-color: #1a2336;
+  background-color: var(--cardproject-background);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 1.5rem;
@@ -13,7 +13,14 @@
   &:hover {
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
+    box-shadow: var(--cardproject-shadow);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
 
   &__icon {
@@ -25,19 +32,38 @@
     align-items: center;
     color: white;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    margin-bottom: 1rem;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 179, 255, 0.1);
+      color: #fff;
+    }
   }
 
   &__title {
     color: #fff;
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 100;
     margin-bottom: 0.5rem;
   }
 
   &__description {
     color: #9ca3af;
     font-size: 0.875rem;
+    font-weight: 200;
     line-height: 1.5;
     margin-bottom: 1.5rem;
   }

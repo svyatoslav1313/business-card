@@ -7,6 +7,13 @@
 
 @font-face {
   font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-ExtraLight.woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
   src: url("../assets/fonts/Roboto-Thin.woff2");
   font-weight: 100;
   font-style: normal;
@@ -24,4 +31,46 @@
   src: url("../assets/fonts/ScienceGothic-ExtraLight.woff2");
   font-weight: 200;
   font-style: normal;
+}
+
+:root {
+  --center-spot-start: #191a1a;
+  --center-spot-end: #00b7ff;
+  --spot-start: #191a1a;
+  --spot-end: #00b7ff;
+
+  --header-name: #29cdff;
+  --header-position: #20e4ba;
+
+  --modal-background: #131b2e00;
+  --modal-topline: linear-gradient(90deg, #22d3ee, #34d399, #3b82f6);
+  --modal-plus-color: #31e2e597;
+
+  --cardproject-background: #3666692b;
+  --cardproject-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
+
+  --addproject-background: #00bbff12;
+  --addproject-submit: linear-gradient(to bottom right, #22eebf, #3b5bf6);
+  --addproject-submit-shadow: 0 10px 15px -3px rgba(6, 136, 212, 0.4);
+}
+
+[data-theme="Red"] {
+  --center-spot-start: #191a1a;
+  --center-spot-end: #ff0000;
+  --spot-start: #191a1a;
+  --spot-end: #ff9900;
+
+  --header-name: #e6dccf;
+  --header-position: #c68450;
+
+  --modal-background: rgb(19 27 46 / 0%);
+  --modal-topline: linear-gradient(90deg, #ee2222, #d38734, #f63b3b);
+  --modal-plus-color: #fff;
+
+  --cardproject-background: #1a233616;
+  --cardproject-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.15);
+
+  --addproject-background: #5f5f5f12;
+  --addproject-submit: linear-gradient(to bottom right, #ee7722, #f63b3b);
+  --addproject-submit-shadow: 0 10px 15px -3px rgb(212 25 6 / 40%);
 }

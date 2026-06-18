@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Kickstarter",
+    "description": "Масштабируемый интернет-магазин с корзиной, системой оплаты и современным интерфейсом",
+    "tags": ["HTML", "CSS"],
+    "demoLink": "https://svyatoslav1313.github.io/Kickstarter/",
+    "backgroundColor": "linear-gradient(to bottom right, #22d3ee, #3b82f6)"
+  },
+  {
+    "id": 2,
+    "title": "React Phone Catalog",
+    "description": "Масштабируемый интернет-магазин с полной корзиной, оплатой",
+    "tags": ["HTML", "SASS", "React", "TS", "Router"],
+    "demoLink": "https://svyatoslav1313.github.io/react_phone-catalog/",
+    "backgroundColor": "linear-gradient(to bottom right, #C084FC, #EC4899)"
+  },
+  {
+    "id": 3,
+    "title": "2048 Game",
+    "description": "Интерактивная игра 2048 с интуитивным интерфейсом и динамической механикой повышения плиток",
+    "tags": ["HTML", "CSS", "JS"],
+    "demoLink": "https://svyatoslav1313.github.io/js_2048_game/",
+    "backgroundColor": "linear-gradient(to bottom right, #1de9b3ff, #48ec6bff)"
+  }
+]

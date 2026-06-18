@@ -1,54 +1,65 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Modalwin.scss';
 import { ProjectCard } from './components/ProjectCard';
+import { AddProject } from './components/AddProject';
+import { useAppSelector } from '../../app/hooks';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
-  handleModalIsOpen: () => void;
+  isModalOpen: boolean;
+  onChangeOpenModal: (value: boolean) => void;
 }
 
-export const Modalwin: React.FC<Props> = ({ handleModalIsOpen }) => {
-  const [closing, setClosing] = useState(false);
+export const Modalwin: React.FC<Props> = ({ isModalOpen, onChangeOpenModal }) => {
+  const [addProject, setAddProject] = useState(false);
+  const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const projects = useAppSelector(state => state.projects.list);
 
-  const closeModal = () => {
-    setClosing(true);
-
-    setTimeout(() => {
-      handleModalIsOpen();
-    }, 1000);
-  }
   return (
-    <div className={`modalwin ${closing ? 'closing' : ''}`}>
-      <div className={`modalwin__inner ${closing ? 'closing' : ''}`}>
+    <div className={`modalwin ${isModalOpen ? '' : 'close'} ${addProject ? '' : 'blur'}`}>
+      <div className={`modalwin__inner ${isModalOpen ? '' : 'close'} ${addProject ? 'transform' : ''}`}>
         <div className='modalwin__top-line'></div>
         <div className='modalwin__top'>
-          <h3 className='modalwin__title'>Мои <span style={{ color: '#22d3ee' }}>Проекты</span></h3>
-          <button className='modalwin__top-button' onClick={closeModal}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          <h3 className='modalwin__title'>{t('modal.title.first')} <span style={{ color: `${theme === 'Red' ? '#ff8010' : '#00d9ff'}` }}>{t('modal.title.second')}</span></h3>
+          <button className='modalwin__top-button' onClick={() => onChangeOpenModal(false)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-x"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
           </button>
         </div>
         <div className='modalwin__projects'>
-          <ProjectCard
-            title='Kickstarter'
-            description='Масштабируемый интернет-магазин с корзиной, системой оплаты и современным интерфейсом.'
-            background='linear-gradient(to bottom right, #22d3ee, #3b82f6)'
-            demoLink='https://svyatoslav1313.github.io/Kickstarter/'
-            tags={['HTML', 'SCSS']}
-          />
-          <ProjectCard
-            title='React Phone Catalog'
-            description='Масштабируемый интернет-магазин с полной корзиной, оплатой'
-            background='linear-gradient(to bottom right, #C084FC, #EC4899)'
-            demoLink='https://svyatoslav1313.github.io/react_phone-catalog/'
-            tags={['HTML', 'SCSS', 'React', 'TS', 'Router']}
-          />
-          <ProjectCard
-            title='React Phone Catalog'
-            description='Интерактивная игра 2048 с интуитивным интерфейсом и динамической механикой повышения плиток.'
-            background='linear-gradient(to bottom right, #1de9b3ff, #48ec6bff)'
-            demoLink='https://svyatoslav1313.github.io/js_2048_game/'
-            tags={['HTML', 'SCSS', 'JS']}
-          />
+          {projects.map(project => (
+            <ProjectCard
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              demoLink={project.demoLink}
+              backgroundColor={project.backgroundColor}
+              isNew={project.isNew}
+            />
+          ))}
+          <div className='modalwin__plus' onClick={() => setAddProject(true)}>
+            <div className='modalwin__plus-inner'></div>
+          </div>
         </div>
+        <AddProject openModal={addProject} handleAddProject={(value) => setAddProject(value)} />
       </div>
     </div>
   );
